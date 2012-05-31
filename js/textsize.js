@@ -13,12 +13,12 @@ $.fn.equalHeights = function(px) {
 };
 
 $(document).ready(function() {
-  var textSize = function(e, percent) {
-    $("#main-content, #content-bottom").css("font-size", percent + '%');
+  $('ul#text-size li a').click(function(e) {
+    $('body')
+      .removeClass('textsize-normal')
+      .removeClass('textsize-bigger')
+      .removeClass('textsize-biggest')
+      .addClass(this.id);
     e.preventDefault();
-  }
-  $("#textSize100").click(function(e) { textSize(e, '100'); });
-  $("#textSize110").click(function(e) { textSize(e, '110'); });
-  $("#textSize120").click(function(e) { textSize(e, '120'); });
-  $("#textSize130").click(function(e) { textSize(e, '130'); });
+  })
 });
