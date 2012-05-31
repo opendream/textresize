@@ -1,0 +1,40 @@
+<?php
+
+/** 
+ * Implementation of hook_block().
+ */
+function textsize_block($op, $delta = 0, $edit = array()) {
+  if ($op == 'list') {
+    $blocks['textsize']['info'] = t('Text Size');
+    return $blocks;
+  }
+  else if ($op == 'view') {
+    $func = "textsize_block_${delta}_content";
+    if (function_exists($func)) {
+      return $func();
+    }
+  }
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function textsize_theme() {
+  return array(
+    'textsize' => array(
+      'arguments' => array('image_path' => NULL),
+      'template' => 'theme/textsize',
+    ),
+  );
+}
+
+/**
+ * Text size block content.
+ */
+function textsize_block_textsize_content() {
+  $module_path = drupal_get_path('module', 'textsize');
+  drupal_add_js($module_path .'/js/textsize.js');
+  drupal_add_css($module_path .'/css/textsize.css');
+  $block['content'] = theme('textsize', base_path() . $module_path .'/images');
+  return $block;
+}

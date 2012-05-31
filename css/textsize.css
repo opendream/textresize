@@ -1,0 +1,15 @@
+ul#content-control {
+	float: right;
+	overflow: hidden;
+	width: 471px;
+	height: 20px;
+	margin: 15px 0 0;
+}
+
+ul#content-control li {
+	display: inline;
+	float: left;
+	list-style-type: none;
+	margin: 0 0 0 30px;
+	padding: 0 0 0 15px;
+}
